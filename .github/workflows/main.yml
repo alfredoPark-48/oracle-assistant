@@ -18,10 +18,10 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 158.101.21.48 >> ~/.ssh/known_hosts
+          ssh-keyscan ${{ secrets.SSH_SERVER_IP }} >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy Code
         run: |
-          ssh -i ~/.ssh/id_rsa opc@158.101.21.48 "cd oracle-assistant && git pull origin main"
+          ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git stash && git pull origin main"
