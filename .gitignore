@@ -2,3 +2,4 @@ node_modules
 service-*
 package/
 *.tgz
+.DS_Store

@@ -8,7 +8,8 @@
     "help": "npm run bots-node-sdk -- --help",
     "prepack": "npm run bots-node-sdk -- pack --dry-run",
     "start": "npm run bots-node-sdk -- service .",
-    "docker-build": "docker-compose build --force-rm --no-cache"
+    "docker-build": "docker-compose build --force-rm --no-cache",
+    "pack": "node pack.js"
   },
   "repository": {},
   "dependencies": {},
