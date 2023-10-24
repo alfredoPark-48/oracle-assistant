@@ -16,12 +16,13 @@ jobs:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 158.101.21.48 >> ~/.ssh/known_hosts
+          echo "$SSH_PRIVATE_KEY" 
+          # > ~/.ssh/id_rsa
+          # chmod 600 ~/.ssh/id_rsa
+          # ssh-keyscan 158.101.21.48 >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy Code
-        run: |
-          ssh -i ~/.ssh/id_rsa opc@158.101.21.48 "cd oracle-assistant && git pull origin main"
+      # - name: Deploy Code
+      #   run: |
+      #     ssh -i ~/.ssh/id_rsa opc@158.101.21.48 "cd oracle-assistant && git pull origin main"
