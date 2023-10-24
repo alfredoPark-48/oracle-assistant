@@ -1,9 +1,12 @@
 "use strict";
 
+// node-fetch library to make HTTP requests, allows us to fetch resources across the network.
 const fetch = require("node-fetch");
 
+// custom get-customers REST api
 const getCustomersURL =
   "https://g57a62130c54ddf-productorders.adb.us-chicago-1.oraclecloudapps.com/ords/creditchatbot/oda/creditchatbot/";
+
 
 function getCustomers(urlRequest, logger, callback) {
   logger.info(urlRequest);
@@ -26,6 +29,7 @@ function getCustomers(urlRequest, logger, callback) {
     });
 }
 
+// entry point for the 'get-customers' component
 module.exports = {
   metadata: () => ({
     name: "com.credit.oda",
