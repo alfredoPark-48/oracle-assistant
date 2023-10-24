@@ -24,4 +24,4 @@ jobs:
 
       - name: Deploy Code
         run: |
-          ssh -i ~/.ssh/id_rsa opc@158.101.21.48 "cd /path/to/your/app && git pull"
+          ssh -i ~/.ssh/id_rsa opc@158.101.21.48 "cd oracle-assistant && git pull origin main"
