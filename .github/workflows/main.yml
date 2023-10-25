@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Run unit tests
         run: |
-          npx jest --verbose
+          npm test
 
   deploy:
     runs-on: ubuntu-latest
