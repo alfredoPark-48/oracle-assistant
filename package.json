@@ -9,7 +9,8 @@
     "prepack": "npm run bots-node-sdk -- pack --dry-run",
     "start": "npm run bots-node-sdk -- service .",
     "docker-build": "docker-compose build --force-rm --no-cache",
-    "pack": "node pack.js"
+    "pack": "node pack.js",
+    "test": "npx jest --verbose"
   },
   "repository": {},
   "devDependencies": {
