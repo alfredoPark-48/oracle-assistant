@@ -10,7 +10,7 @@
     "start": "npm run bots-node-sdk -- service .",
     "docker-build": "docker-compose build --force-rm --no-cache",
     "pack": "node pack.js",
-    "test": "npx jest --verbose"
+    "test": "jest --verbose"
   },
   "repository": {},
   "devDependencies": {
