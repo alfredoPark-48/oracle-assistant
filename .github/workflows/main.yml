@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Run unit tests
         run: |
+          npm install
           npm test
 
   deploy:
