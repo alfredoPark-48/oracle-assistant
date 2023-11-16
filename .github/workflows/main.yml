@@ -42,5 +42,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Deploy Code
         run: |
-          ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git pull origin main"
+          ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git stash && git pull origin main"
