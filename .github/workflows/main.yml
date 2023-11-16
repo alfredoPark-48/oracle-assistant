@@ -44,7 +44,7 @@ jobs:
 
       - name: Merge with main and pull
         run: |
-          ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git stash && git pull origin main && git merge ${{ github.event.ref }} --no-edit"
+          ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git fetch origin && git pull origin main && git merge ${{ github.event.ref }} --no-edit"
 
       - name: Deploy Code
         run: |
