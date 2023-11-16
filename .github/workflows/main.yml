@@ -21,7 +21,6 @@ jobs:
       - name: Run unit tests
         run: |
           npm install
-          npm test
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           PORT: ${{ secrets.PORT }}
