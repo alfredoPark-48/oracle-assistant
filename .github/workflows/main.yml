@@ -3,7 +3,7 @@ name: Deploy to SSH Server
 on:
   push:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   test:
@@ -16,12 +16,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14 
+          node-version: 16
 
       - name: Run unit tests
         run: |
           npm install
-          npm test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          PORT: ${{ secrets.PORT }}
 
   deploy:
     runs-on: ubuntu-latest

@@ -3,3 +3,4 @@ service-*
 package/
 *.tgz
 .DS_Store
+.env
