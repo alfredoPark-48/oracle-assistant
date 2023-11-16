@@ -42,10 +42,5 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Merge with main and pull
         run: |
           ssh opc@${{ secrets.SSH_SERVER_IP }} "cd oracle-assistant && git pull origin main"
-
-      - name: Deploy Code
-        run: |
-          git push origin main
