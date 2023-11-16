@@ -44,6 +44,7 @@ jobs:
 
       - name: Merge with main and pull
         run: |
+          ssh opc@${{ secrets.SSH_SERVER_IP }}
           cd oracle-assistant
           git checkout main
           git pull origin main
@@ -51,6 +52,5 @@ jobs:
           
       - name: Deploy Code
         run: |
-          cd oracle-assistant
           git push origin main
-          # Additional deployment steps if needed
+
