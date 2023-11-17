@@ -7,10 +7,11 @@
     "bots-node-sdk": "bots-node-sdk",
     "help": "npm run bots-node-sdk -- --help",
     "prepack": "npm run bots-node-sdk -- pack --dry-run",
-    "start": "npm run bots-node-sdk -- service .",
+    "start": "node src/server/index.js",
     "docker-build": "docker-compose build --force-rm --no-cache",
     "pack": "node pack.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "dev": "nodemon src/server/index.js"
   },
   "repository": {},
   "devDependencies": {
@@ -19,6 +20,7 @@
     "babel-preset-env": "^1.7.0",
     "express": "^4.18.2",
     "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
     "superagent": "^8.1.2",
     "supertest": "^6.3.3"
   },
