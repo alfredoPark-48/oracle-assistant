@@ -25,13 +25,14 @@ module.exports = (app) => {
     })
 
     app.post("/product/", async (req, res) => {
-        const { productName, price, quantity, brandName } = req.body;
-
+        const { productName, price, quantity, brandName, description } = req.body;
+        
         const product = new Product({
             productName,
             price,
             quantity,
             brandName,
+            description
         });
 
         try {
