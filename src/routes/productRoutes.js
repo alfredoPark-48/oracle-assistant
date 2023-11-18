@@ -8,6 +8,22 @@ module.exports = (app) => {
         res.send(products);
     });
 
+    app.get("/product/:productId", async (req, res) => {
+        const { productId } = req.parms;
+
+        try {
+            const product = await Product.findById(productId);
+            
+            if (!product) {
+                return res.status(404).send("Product not found");
+            }
+
+            return res.send(product);
+        } catch (error) {
+            return res.status(500).send(error);
+        }
+    })
+
     app.post("/product/", async (req, res) => {
         const { productName, price, quantity, brandName } = req.body;
 
