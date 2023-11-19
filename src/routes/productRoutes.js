@@ -9,7 +9,7 @@ module.exports = (app) => {
     });
 
     app.get("/product/:productId", async (req, res) => {
-        const { productId } = req.parms;
+        const { productId } = req.params;
 
         try {
             const product = await Product.findById(productId);
@@ -49,8 +49,7 @@ module.exports = (app) => {
 
         try {
             const updatedProduct = await Product.findByIdAndUpdate(
-                productId,
-                updateFields,
+                productId, updateFields,
                 { new: true }
             );
 

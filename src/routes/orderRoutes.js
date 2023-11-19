@@ -24,6 +24,22 @@ module.exports = (app) => {
         }
     });
 
+    app.get('/order/user/:userId', async (req, res) => {
+        const { userId } = req.params;
+
+        try {
+            const orders = await Order.find({ user: userId });
+
+            if (!orders || orders.length === 0) {
+                return res.status(404).send("No products found for the user");
+            }
+
+            return res.send(products);
+        } catch (error) {
+            return res.status(500).send(error.message);
+        }
+    })
+
     app.post("/order", async (req, res) => {
         const { user, products } = req.body;
 
