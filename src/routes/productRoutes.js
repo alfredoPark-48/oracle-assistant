@@ -24,6 +24,24 @@ module.exports = (app) => {
         }
     })
 
+    app.get("/product/name/:partialName", async (req, res) => {
+        const { partialName } = req.params;
+
+        try {
+            const products = await Product.find({
+                productName: { $regex: new RegExp(partialName, "i") },
+            });
+
+            if (!products || products.length === 0) {
+                return res.status(404).send("No matching products found");
+            }
+
+            return res.send(products);
+        } catch (error) {
+            return res.status(500).send(error.message);
+        }
+    });
+
     app.post("/product/", async (req, res) => {
         const { productName, price, quantity, brandName, description } = req.body;
         
