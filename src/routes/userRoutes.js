@@ -28,7 +28,7 @@ module.exports = (app) => {
         const { userName } = req.params;
 
         try {
-            const user = await User.find({ userName });
+            const user = await User.find({ displayName: userName });
             
             if (!user) {
                 return res.status(404).send("User not found");
