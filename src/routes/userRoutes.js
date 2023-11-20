@@ -34,7 +34,7 @@ module.exports = (app) => {
                 return res.status(404).send("User not found");
             }
 
-            return user;
+            return res.status(200).send(user);
         } catch (error) {
             return res.status(500).send(error);
         }
