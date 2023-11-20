@@ -17,8 +17,26 @@ module.exports = (app) => {
             if (!user) {
                 return res.status(404).send('User not found');
             }
+
+            return res.status(200).send(user);
         } catch (error) {
            res.status(500).send(error);
+        }
+    })
+
+    app.get("/user/name/:userName", async (req, res) => {
+        const { userName } = req.params;
+
+        try {
+            const user = await User.find({ userName });
+            
+            if (!user) {
+                return res.status(404).send("User not found");
+            }
+
+            return user;
+        } catch (error) {
+            return res.status(500).send(error);
         }
     })
 
