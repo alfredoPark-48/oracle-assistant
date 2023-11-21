@@ -13,7 +13,7 @@ module.exports = (app) => {
 
         try {
             const product = await Product.findById(productId);
-            
+
             if (!product) {
                 return res.status(404).send("Product not found");
             }
@@ -22,7 +22,7 @@ module.exports = (app) => {
         } catch (error) {
             return res.status(500).send(error);
         }
-    })
+    });
 
     app.get("/product/name/:partialName", async (req, res) => {
         const { partialName } = req.params;
@@ -42,15 +42,34 @@ module.exports = (app) => {
         }
     });
 
+    app.get("/product/brand/:brandName", async (req, res) => {
+        const { brandName } = req.params;
+
+        try {
+            const products = await Product.find({
+                brandName: { $regex: new RegExp(brandName, "i") },
+            });
+
+            if (!products || products.length === 0) {
+                return res.status(404).send("No matching products found");
+            }
+
+            return res.status(200).send(products);
+        } catch (error) {
+            return res.status(500).send(error.message);
+        }
+    });
+
     app.post("/product/", async (req, res) => {
-        const { productName, price, quantity, brandName, description } = req.body;
-        
+        const { productName, price, quantity, brandName, description } =
+            req.body;
+
         const product = new Product({
             productName,
             price,
             quantity,
             brandName,
-            description
+            description,
         });
 
         try {
@@ -67,7 +86,8 @@ module.exports = (app) => {
 
         try {
             const updatedProduct = await Product.findByIdAndUpdate(
-                productId, updateFields,
+                productId,
+                updateFields,
                 { new: true }
             );
 
