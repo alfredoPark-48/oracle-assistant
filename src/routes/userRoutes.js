@@ -41,10 +41,11 @@ module.exports = (app) => {
     })
 
     app.post("/user", async (req, res) => {
-        const { displayName } = req.body;
+        const { displayName, creditResult } = req.body;
 
         const user = new User({
             displayName,
+            creditResult
         });
 
         try {
@@ -54,6 +55,17 @@ module.exports = (app) => {
             res.status(500).send(error);
         }
     });
+    
+    app.post("/user/credit", async (req, res) => {
+        const { displayName, creditResult } = req.body;
+
+        try {
+            const user = await User.findOneAndUpdate({displayName: displayName},{creditResult: creditResult});
+            res.send(user);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    })
 
     app.patch("/user/:userId", async (req, res) => {
         const { userId } = req.params;
